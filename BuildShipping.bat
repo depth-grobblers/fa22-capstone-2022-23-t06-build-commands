@@ -1,4 +1,6 @@
-cd:\Project\fa22-capstone-2022-23-t06-p01
+cd C:\Projects\fa22-capstone-2022-23-t06-p01
+
+git config --global --add safe.directory C:/Projects/fa22-capstone-2022-23-t06-p01
 
 git pull origin main
 
@@ -24,13 +26,7 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 cd C:\Build
 
 Rem Archive
-powershell Compress-Archive Data\Builds\ Data\Builds.zip
+powershell Compress-Archive windows\ %WORKSPACE%\Data\Builds.zip
 EXIT /B %ERRORLEVEL%
-
-Rem check file size
-FOR /F "usebackq" %%A IN ('"Data\Builds.zip"') DO set size=%%~zA
-if %size% LSS 1000 (
-    EXIT /B 1
-)
 
 EXIT /B 0
