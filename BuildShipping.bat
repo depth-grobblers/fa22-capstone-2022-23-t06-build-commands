@@ -14,7 +14,7 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 
 cd %WORKSPACE%
 
-cd fa22-capstone-2022-23-t06-build-repo
+cd fa22-capstone-2022-23-t06-build-commands
 
 Call Generate.bat
 if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
