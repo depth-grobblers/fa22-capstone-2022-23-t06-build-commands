@@ -1,10 +1,7 @@
 SET PROJECT_FOLDER=Capstone_Test_Repo
 SET PROJECT_NAME=VR_Template
-%PROJECT_NAME%
 
-cd:\Project\%PROJECT_FOLDER%
-
-git config --global --add safe.directory C:/Projects/fa22-capstone-2022-23-t06-p01
+cd c:\Project\%PROJECT_FOLDER%
 
 git pull origin main
 
@@ -30,7 +27,7 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 cd C:\Build
 
 Rem Archive
-powershell Compress-Archive windows\ %WORKSPACE%\Builds.zip
+powershell Compress-Archive Data\Builds\ Data\Builds.zip
 EXIT /B %ERRORLEVEL%
 
 cmd /c call Build.bat
