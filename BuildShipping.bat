@@ -1,4 +1,7 @@
-cd:\Project\fa22-capstone-2022-23-t06-p01
+SET PROJECT_FOLDER=Capstone_Test_Repo
+SET PROJECT_NAME=VR_Template
+%PROJECT_NAME%
+cd:\Project\%PROJECT_FOLDER%
 
 git pull origin main
 
@@ -6,7 +9,7 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 
 cd %WORKSPACE%
 
-cd fa22-capstone-2022-23-t06-build-repo
+cd %PROJECT_FOLDER%
 
 Call Generate.bat
 if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
@@ -27,10 +30,10 @@ Rem Archive
 powershell Compress-Archive Data\Builds\ Data\Builds.zip
 EXIT /B %ERRORLEVEL%
 
-Rem check file size
-FOR /F "usebackq" %%A IN ('"Data\Builds.zip"') DO set size=%%~zA
-if %size% LSS 1000 (
-    EXIT /B 1
-)
+cmd /c call Build.bat
+if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
+
+Rem do you need this? yes
+move Data\Builds.zip %WORKSPACE%
 
 EXIT /B 0
