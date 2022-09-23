@@ -35,4 +35,12 @@ Rem Archive
 powershell Compress-Archive windows\ %WORKSPACE%\Builds.zip
 EXIT /B %ERRORLEVEL%
 
+cd %WORKSPACE%
+
+Rem check file size
+FOR /F "usebackq" %%A IN ('"Builds.zip"') DO set size=%%~zA
+if %size% LSS 1000 (
+    EXIT /B 1
+)
+
 EXIT /B 0
