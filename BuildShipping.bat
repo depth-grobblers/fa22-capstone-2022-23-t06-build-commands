@@ -32,7 +32,7 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 cd C:\Build
 
 Rem Archive
-powershell Compress-Archive windows\ %WORKSPACE%\Builds.zip
+powershell Compress-Archive windows\ %WORKSPACE%\Builds%BUILD_NUMBER%.zip
 EXIT /B %ERRORLEVEL%
 
 cd %WORKSPACE%
