@@ -41,7 +41,7 @@ powershell Compress-Archive windows\ %WORKSPACE%\buildv%BUILD_NUMBER%.zip
 EXIT /B %ERRORLEVEL%
 
 Rem Copy
-powershell Copy-Item %WORKSPACE%\buildv%BUILD_NUMBER%.zip %WORKSPACE%\build-latest.zip
+powershell Copy-Item %WORKSPACE%\buildv%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
 EXIT /B %ERRORLEVEL%
 
 cd %WORKSPACE%
