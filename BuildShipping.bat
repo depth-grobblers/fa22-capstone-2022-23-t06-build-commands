@@ -38,11 +38,6 @@ cd C:\Build
 
 Rem Archive
 powershell Compress-Archive windows\ %WORKSPACE%\buildv%BUILD_NUMBER%.zip
-EXIT /B %ERRORLEVEL%
-
-Rem Copy
-powershell Copy-Item %WORKSPACE%\buildv%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
-EXIT /B %ERRORLEVEL%
 
 cd %WORKSPACE%
 
@@ -51,6 +46,10 @@ FOR /F "usebackq" %%A IN ('"buildv%BUILD_NUMBER%.zip"') DO set size=%%~zA
 if %size% LSS 1000 (
     EXIT /B 1
 )
+
+Rem Copy
+powershell Copy-Item %WORKSPACE%\buildv%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
+EXIT /B %ERRORLEVEL%
 
 EXIT /B 0
 
