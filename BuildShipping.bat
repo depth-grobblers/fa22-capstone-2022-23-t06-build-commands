@@ -37,7 +37,8 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 cd C:\Build
 
 Rem Archive
-powershell Compress-Archive windows\ %WORKSPACE%\buildv%BUILD_NUMBER%.zip
+ren windows DeadPedal_Windows%BUILD_NUMBER%
+powershell Compress-Archive DeadPedal_Windows%BUILD_NUMBER%\ %WORKSPACE%\buildv%BUILD_NUMBER%.zip
 
 cd %WORKSPACE%
 
