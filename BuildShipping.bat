@@ -38,7 +38,7 @@ cd C:\Build
 
 Rem Archive
 ren windows DeadPedal_Windows%BUILD_NUMBER%
-powershell Compress-Archive DeadPedal_Windows%BUILD_NUMBER%\ %WORKSPACE%\buildv%BUILD_NUMBER%.zip
+powershell Compress-Archive DeadPedal_Windows%BUILD_NUMBER%\ %WORKSPACE%\buildv23-%BUILD_NUMBER%.zip
 
 cd %WORKSPACE%
 
@@ -49,7 +49,7 @@ if %size% LSS 1000 (
 )
 
 Rem Copy
-powershell Copy-Item %WORKSPACE%\buildv%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
+powershell Copy-Item %WORKSPACE%\buildv23-%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
 EXIT /B %ERRORLEVEL%
 
 EXIT /B 0
