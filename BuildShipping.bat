@@ -49,7 +49,7 @@ powershell Copy-Item %WORKSPACE%\%BUILD_NAME%.zip -Destination %WORKSPACE%\build
 EXIT /B %ERRORLEVEL%
 
 Rem check file size
-FOR /F "usebackq" %%A IN ('"buildv23-%BUILD_NUMBER%"') DO set size=%%~zA
+FOR /F "usebackq" %%A IN ('"%BUILD_NAME%"') DO set size=%%~zA
 if %size% LSS 1000 (
     EXIT /B 1
 )
