@@ -42,15 +42,15 @@ powershell Compress-Archive DeadPedal_Windows%BUILD_NUMBER%\ %WORKSPACE%\buildv2
 
 cd %WORKSPACE%
 
-Rem check file size
-FOR /F "usebackq" %%A IN ('"buildv%BUILD_NUMBER%.zip"') DO set size=%%~zA
-if %size% LSS 1000 (
-    EXIT /B 1
-)
-
 Rem Copy
 powershell Copy-Item %WORKSPACE%\buildv23-%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
 EXIT /B %ERRORLEVEL%
+
+Rem check file size
+FOR /F "usebackq" %%A IN ('"buildv23-%BUILD_NUMBER%"') DO set size=%%~zA
+if %size% LSS 1000 (
+    EXIT /B 1
+)
 
 EXIT /B 0
 
