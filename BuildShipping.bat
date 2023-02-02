@@ -1,5 +1,7 @@
 SET PROJECT_FOLDER=fa22-capstone-2022-23-t06
 SET PROJECT_NAME=Dead_Pedal_2
+SET BUILD_NAME=buildv23-%BUILD_NUMBER%
+SET BUILD_FOLDER_NAME=DeadPedal_Windows%BUILD_NUMBER%
 
 %PROJECT_FOLDER%
 %PROJECT_NAME%
@@ -37,13 +39,13 @@ if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 cd C:\Build
 
 Rem Archive
-ren windows DeadPedal_Windows%BUILD_NUMBER%
-powershell Compress-Archive DeadPedal_Windows%BUILD_NUMBER%\ %WORKSPACE%\buildv23-%BUILD_NUMBER%.zip
+ren windows %BUILD_FOLDER_NAME%
+powershell Compress-Archive %BUILD_FOLDER_NAME%\ %WORKSPACE%\%BUILD_NAME%.zip
 
 cd %WORKSPACE%
 
 Rem Copy
-powershell Copy-Item %WORKSPACE%\buildv23-%BUILD_NUMBER%.zip -Destination %WORKSPACE%\build-latest.zip
+powershell Copy-Item %WORKSPACE%\%BUILD_NAME%.zip -Destination %WORKSPACE%\build-latest.zip
 EXIT /B %ERRORLEVEL%
 
 Rem check file size
