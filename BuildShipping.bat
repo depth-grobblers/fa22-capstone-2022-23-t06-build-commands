@@ -42,14 +42,22 @@ Rem Archive
 ren windows %BUILD_FOLDER_NAME%
 powershell Compress-Archive %BUILD_FOLDER_NAME%\ %WORKSPACE%\%BUILD_NAME%.zip
 
-cd %WORKSPACE%
-
 Rem Copy
 powershell Copy-Item %WORKSPACE%\%BUILD_NAME%.zip -Destination %WORKSPACE%\build-latest.zip
 EXIT /B %ERRORLEVEL%
 
+rem go to workspace
+cd %WORKSPACE%
+
+
 Rem check file size
 FOR /F "usebackq" %%A IN ('"%BUILD_NAME%"') DO set size=%%~zA
+if %size% LSS 1000 (
+    EXIT /B 1
+)
+
+Rem check file size
+FOR /F "usebackq" %%A IN ('"build-latest"') DO set size=%%~zA
 if %size% LSS 1000 (
     EXIT /B 1
 )
