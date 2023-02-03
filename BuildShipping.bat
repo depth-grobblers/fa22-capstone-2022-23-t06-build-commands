@@ -41,10 +41,11 @@ cd C:\Build
 Rem Archive
 ren windows %BUILD_FOLDER_NAME%
 powershell Compress-Archive %BUILD_FOLDER_NAME%\ %WORKSPACE%\%BUILD_NAME%.zip
+if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 
 Rem Copy
 powershell Copy-Item %WORKSPACE%\%BUILD_NAME%.zip -Destination %WORKSPACE%\build-latest.zip
-EXIT /B %ERRORLEVEL%
+if NOT "%ERRORLEVEL%"=="0" EXIT /B %ERRORLEVEL%
 
 rem go to workspace
 cd %WORKSPACE%
