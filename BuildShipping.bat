@@ -49,6 +49,7 @@ EXIT /B %ERRORLEVEL%
 rem go to workspace
 cd %WORKSPACE%
 
+dir
 
 Rem check file size
 FOR /F "usebackq" %%A IN ('"%BUILD_NAME%"') DO set size=%%~zA
