@@ -53,14 +53,14 @@ cd %WORKSPACE%
 dir
 
 Rem check file size
-FOR /F "usebackq" %%A IN ('"%BUILD_NAME%"') DO set size=%%~zA
+FOR /F "usebackq" %%A IN ('"%BUILD_NAME%.zip"') DO set size=%%~zA
 %size%
 if %size% LSS 1000 (
     EXIT /B 1
 )
 
 Rem check file size
-FOR /F "usebackq" %%A IN ('"build-latest"') DO set size=%%~zA
+FOR /F "usebackq" %%A IN ('"build-latest.zip"') DO set size=%%~zA
 %size%
 if %size% LSS 1000 (
     EXIT /B 1
